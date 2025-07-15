@@ -104,6 +104,12 @@ export default function ResourcesPage() {
               <Link href="/calendar" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
                 Calendar
               </Link>
+              <Link href="/about" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                About
+              </Link>
+              <Link href="/feedback" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                Feedback
+              </Link>
             </nav>
           </div>
         </div>

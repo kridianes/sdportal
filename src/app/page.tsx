@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ChatBot from '@/components/ChatBot'
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         </div>
 
         {/* Navigation Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           <Link href="/roadmap" className="group">
             <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border-l-4 border-blue-500">
               <div className="flex items-center mb-3">
@@ -87,6 +88,42 @@ export default function Home() {
               </p>
             </div>
           </Link>
+
+          <Link href="/about" className="group">
+            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border-l-4 border-indigo-500">
+              <div className="flex items-center mb-3">
+                <div className="bg-indigo-100 p-2 rounded-lg mr-3">
+                  <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h2 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600">
+                  About Us
+                </h2>
+              </div>
+              <p className="text-sm text-gray-600">
+                Meet our team and learn about our services
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/feedback" className="group">
+            <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border-l-4 border-pink-500">
+              <div className="flex items-center mb-3">
+                <div className="bg-pink-100 p-2 rounded-lg mr-3">
+                  <svg className="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <h2 className="text-lg font-semibold text-gray-900 group-hover:text-pink-600">
+                  Feedback
+                </h2>
+              </div>
+              <p className="text-sm text-gray-600">
+                Share feedback and get support
+              </p>
+            </div>
+          </Link>
         </div>
 
         {/* Quick Stats */}
@@ -108,6 +145,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ChatBot />
     </main>
   )
 }
