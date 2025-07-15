@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import ChatBot from '@/components/ChatBot'
+import UniversalSearch from '@/components/UniversalSearch'
 
 export default function Home() {
   return (
@@ -7,6 +8,9 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
+          <div className="flex justify-center mb-6">
+            <UniversalSearch />
+          </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Team Portal
           </h1>
