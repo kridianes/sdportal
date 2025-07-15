@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import UniversalSearch from '@/components/UniversalSearch'
 
 export default function CalendarPage() {
   // Sample calendar data - in a real app, this would come from a database or calendar API
@@ -127,29 +128,32 @@ export default function CalendarPage() {
                 <span className="text-xl font-bold text-gray-900">Team Portal</span>
               </Link>
             </div>
-            <nav className="flex space-x-8">
-              <Link href="/" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Home
-              </Link>
-              <Link href="/roadmap" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Roadmap
-              </Link>
-              <Link href="/updates" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Updates
-              </Link>
-              <Link href="/resources" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Resources
-              </Link>
-              <Link href="/calendar" className="text-blue-600 px-3 py-2 text-sm font-medium">
-                Calendar
-              </Link>
-              <Link href="/about" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                About
-              </Link>
-              <Link href="/feedback" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Feedback
-              </Link>
-            </nav>
+            <div className="flex items-center space-x-8">
+              <nav className="flex space-x-8">
+                <Link href="/" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                  Home
+                </Link>
+                <Link href="/roadmap" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                  Roadmap
+                </Link>
+                <Link href="/updates" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                  Updates
+                </Link>
+                <Link href="/resources" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                  Resources
+                </Link>
+                <Link href="/calendar" className="text-blue-600 px-3 py-2 text-sm font-medium">
+                  Calendar
+                </Link>
+                <Link href="/about" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                  About
+                </Link>
+                <Link href="/feedback" className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                  Feedback
+                </Link>
+              </nav>
+              <UniversalSearch />
+            </div>
           </div>
         </div>
       </div>
