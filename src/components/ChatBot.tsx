@@ -22,56 +22,50 @@ export default function ChatBot() {
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
 
-  // Sample responses based on site content
-  const getResponse = (userMessage: string): string => {
-    const message = userMessage.toLowerCase()
-    
-    if (message.includes('team') || message.includes('about')) {
-      return "Our team consists of experienced developers, designers, and product experts. We have specialists in React, Node.js, UI/UX design, DevOps, and quality assurance. You can learn more about our team members on the About page."
+  // Get response from ChatGPT API
+  const getResponse = async (userMessage: string): Promise<string> => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          conversationHistory: messages.slice(-10) // Send last 10 messages for context
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get response from ChatGPT')
+      }
+
+      const data = await response.json()
+      return data.response || "I'm sorry, I couldn't generate a response. Please try again."
+    } catch (error) {
+      console.error('ChatGPT API Error:', error)
+      
+      // Fallback to basic responses if API fails
+      const message = userMessage.toLowerCase()
+      
+      if (message.includes('team') || message.includes('about')) {
+        return "Our team consists of experienced developers, designers, and product experts. We have specialists in React, Node.js, UI/UX design, DevOps, and quality assurance. You can learn more about our team members on the About page."
+      }
+      
+      if (message.includes('service') || message.includes('what do you do')) {
+        return "We offer comprehensive software development services including web application development, API development & integration, cloud infrastructure, database design, UI/UX design, and quality assurance."
+      }
+      
+      if (message.includes('contact') || message.includes('support')) {
+        return "You can reach us at support@teamportal.com, call +1 (555) 123-4567 (Mon-Fri, 9AM-5PM EST), or submit feedback through our portal."
+      }
+      
+      return "I'm having trouble connecting to my AI service right now. Please try again later or contact our support team at support@teamportal.com for immediate assistance."
     }
-    
-    if (message.includes('service') || message.includes('what do you do')) {
-      return "We offer comprehensive software development services including web application development, API development & integration, cloud infrastructure, database design, UI/UX design, and quality assurance. We use modern technologies like React, Next.js, AWS, and more."
-    }
-    
-    if (message.includes('project') || message.includes('update')) {
-      return "You can follow our current projects on the Updates page. We have active projects like Portal Development, Customer Onboarding System, and API Integration Platform. You can follow projects to receive notifications about their progress."
-    }
-    
-    if (message.includes('calendar') || message.includes('meeting') || message.includes('event')) {
-      return "Our team calendar shows upcoming meetings, demos, code reviews, and milestones. You can view the calendar to see team activities and important dates. We typically have sprint planning, stakeholder demos, and retrospectives scheduled regularly."
-    }
-    
-    if (message.includes('resource') || message.includes('document')) {
-      return "We maintain a comprehensive resource library with project presentations, technical documentation, and knowledge base articles. Resources are organized by project and include presentations, documentation, and knowledge sharing materials."
-    }
-    
-    if (message.includes('feedback') || message.includes('support')) {
-      return "You can submit feedback through our Feedback page. We accept general feedback, bug reports, feature requests, resource review requests, and support questions. You can also reach us at support@teamportal.com or call +1 (555) 123-4567."
-    }
-    
-    if (message.includes('process') || message.includes('how do you work')) {
-      return "Our development process follows 4 key steps: 1) Discovery & Planning - understanding your needs, 2) Design & Architecture - creating detailed designs, 3) Development & Testing - building with agile methodologies, and 4) Deployment & Support - launching with ongoing support."
-    }
-    
-    if (message.includes('technology') || message.includes('tech stack')) {
-      return "We work with modern technologies including React, Next.js, Node.js, TypeScript, Python, PostgreSQL, MongoDB, AWS, Docker, Kubernetes, and more. Our tech stack is chosen based on project requirements and scalability needs."
-    }
-    
-    if (message.includes('contact') || message.includes('reach')) {
-      return "You can reach us through multiple channels: Email at support@teamportal.com, phone at +1 (555) 123-4567 (Mon-Fri, 9AM-5PM EST), or submit feedback through our portal. For urgent issues, use the 'Report Critical Issue' option in the Feedback section."
-    }
-    
-    if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-      return "Hello! I'm here to help you navigate our Team Portal and answer questions about our services, projects, and team. What would you like to know?"
-    }
-    
-    // Default response
-    return "I'd be happy to help! I can provide information about our team, services, current projects, calendar events, resources, and how to get support. Could you please be more specific about what you'd like to know?"
   }
 
   const handleSendMessage = async () => {
-    if (!inputText.trim()) return
+    if (!inputText.trim() || isTyping) return
 
     const userMessage: Message = {
       id: messages.length + 1,
@@ -80,21 +74,37 @@ export default function ChatBot() {
       timestamp: new Date()
     }
 
+    const currentInput = inputText
     setMessages(prev => [...prev, userMessage])
     setInputText('')
     setIsTyping(true)
 
-    // Simulate AI response delay
-    setTimeout(() => {
+    try {
+      // Get response from ChatGPT API
+      const responseText = await getResponse(currentInput)
+      
       const botResponse: Message = {
         id: messages.length + 2,
-        text: getResponse(inputText),
+        text: responseText,
         isUser: false,
         timestamp: new Date()
       }
+      
       setMessages(prev => [...prev, botResponse])
+    } catch (error) {
+      console.error('Error getting response:', error)
+      
+      const errorResponse: Message = {
+        id: messages.length + 2,
+        text: "I'm sorry, I'm having trouble responding right now. Please try again or contact our support team at support@teamportal.com.",
+        isUser: false,
+        timestamp: new Date()
+      }
+      
+      setMessages(prev => [...prev, errorResponse])
+    } finally {
       setIsTyping(false)
-    }, 1000)
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -137,7 +147,7 @@ export default function ChatBot() {
               </div>
               <div>
                 <h3 className="font-semibold">Team Portal Assistant</h3>
-                <p className="text-xs text-blue-100">Ask me about our services & projects</p>
+                <p className="text-xs text-blue-100">Powered by ChatGPT • Ask me anything!</p>
               </div>
             </div>
           </div>
