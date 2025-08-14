@@ -1,0 +1,88 @@
+{
+  "common": {
+    "loading": "Loading",
+    "search": "Search",
+    "clear_all": "Clear all",
+    "save": "Save",
+    "unsave": "Unsave",
+    "days": "days",
+    "day": "Day",
+    "flexible": "Flexible",
+    "private": "Private",
+    "public": "Public",
+    "friends": "Friends only",
+    "and": "and",
+    "or": "or",
+    "back_to_discover": "Back to Discover",
+    "go_home": "Go Home",
+    "explore_guides": "Explore Guides",
+    "user": "User",
+    "profile": "Profile"
+  },
+  "auth": {
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "sign_out": "Sign out",
+    "welcome_back": "Welcome back",
+    "create_account": "Create an account",
+    "continue_with_google": "Continue with Google",
+    "continue_with_facebook": "Continue with Facebook",
+    "sign_up_with_google": "Sign up with Google",
+    "sign_up_with_facebook": "Sign up with Facebook",
+    "continue_as_guest": "Continue as guest",
+    "terms_privacy_notice": "By continuing, you agree to our",
+    "terms": "Terms of Service",
+    "privacy_policy": "Privacy Policy",
+    "login_success": "Successfully signed in",
+    "login_error": "Failed to sign in",
+    "guest_mode_enabled": "Guest mode enabled. Some features will be limited."
+  },
+  "nav": {
+    "discover": "Discover",
+    "plan": "Plan",
+    "experience": "Experience",
+    "memories": "Memories",
+    "profile": "Profile"
+  },
+  "discover": {
+    "title": "Discover Travel Guides",
+    "subtitle": "Find inspiration for your next adventure",
+    "search_placeholder": "Search destinations, activities, or interests...",
+    "featured_guides": "Featured Guides",
+    "popular_guides": "Popular Guides",
+    "search_results": "{{count}} results found",
+    "no_results": "No guides found",
+    "about_this_guide": "About this Guide",
+    "itinerary_preview": "Itinerary Preview",
+    "copy_itinerary": "Copy Itinerary",
+    "guide_copied": "Guide copied to your trips",
+    "guide_saved": "Guide saved to your favorites",
+    "guide_unsaved": "Guide removed from your favorites"
+  },
+  "plan": {
+    "my_trips": "My Trips",
+    "manage_your_trips": "Manage and plan your upcoming adventures",
+    "create_trip": "Create Trip",
+    "all_trips": "All Trips",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "in_progress": "In Progress",
+    "draft": "Draft",
+    "no_trips_found": "No trips found",
+    "no_trips_yet": "You haven't created any trips yet",
+    "no_upcoming_trips": "You don't have any upcoming trips",
+    "no_past_trips": "You don't have any past trips",
+    "browse_guides": "Browse Guides",
+    "activities": "activities"
+  },
+  "errors": {
+    "something_went_wrong": "Something went wrong",
+    "try_again_later": "Please try again later",
+    "guide_not_found": "Guide not found",
+    "failed_to_load": "Failed to load guide",
+    "failed_to_copy": "Failed to copy guide",
+    "page_not_found": "Page Not Found",
+    "page_not_found_message": "The page you're looking for doesn't exist or has been moved."
+  }
+}
+

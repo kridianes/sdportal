@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@travel-planner/domain": ["../domain/src"]
+    }
+  },
+  "include": ["src"]
+}
+

@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@travel-planner/domain": ["../domain/src"],
+      "@travel-planner/services": ["../services/src"],
+      "@travel-planner/ui-core": ["../ui-core/src"]
+    }
+  },
+  "include": ["src"]
+}
+
